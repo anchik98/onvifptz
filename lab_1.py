@@ -4,9 +4,10 @@
 from onvif import ONVIFCamera
 
 #Подключение к камере и знакомство с возможностями/ограничениями PTZ
-#Connecting
+# Connecting
 #mycam = ONVIFCamera('192.168.15.42', 80, 'admin', 'passw', 'C:/Python27/onvif/wsdl')
 mycam = ONVIFCamera('192.168.15.42', 80, 'anchik981', 'qDOyrQN278IxC0nT', 'C:/Python27/onvif/wsdl')
+# Getting information
 print mycam.devicemgmt.GetDeviceInformation()
 
 # Creating media service
@@ -33,15 +34,13 @@ print 'Pan position:', status.Position.PanTilt._x
 print 'Tilt position:', status.Position.PanTilt._y
 print 'Zoom position:', status.Position.Zoom._x
 
-
 # Get PTZ configuration options for getting option ranges
 request = ptz.create_type('GetConfigurationOptions')
 request.ConfigurationToken = media_profile.PTZConfiguration._token
 ptz_configuration_options = ptz.GetConfigurationOptions(request)
 print 'PTZ configuration options:', ptz_configuration_options
 
-#Absolute move: диагностика и перемещение
-
+#Absolute move
 request_absolute_move = ptz.create_type('AbsoluteMove')
 request_absolute_move.ProfileToken = media_profile._token
 print 'Absolute move options: ', request_absolute_move
