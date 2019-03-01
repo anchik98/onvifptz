@@ -30,7 +30,7 @@ if __name__ == '__main__':
     ptz.zoom(1.0, 2)
 
     # zoom out
-    ptz.zoom(-0.3, 1)
+    ptz.zoom(0.3, 1)
 
     #Get presets
     ptz.get_preset()
